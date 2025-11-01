@@ -1,0 +1,272 @@
+/* Container width tuned for a compact hero */
+.spark-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 20px; /* keep it tight */
+}
+
+/* Section shell: subtle gradient + glass depth */
+.spark-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 24px;
+  margin: 16px auto 24px;
+  background: linear-gradient(180deg, #f7fafc 0%, #ffffff 60%);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+/* Subtle geometric pattern (non-blocking) */
+.spark-hero__pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(24, 119, 242, 0.06) 1px, transparent 1px),
+    radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 22px 22px, 44px 44px;
+  background-position: 0 0, 11px 11px;
+  z-index: 0;
+}
+
+/* Decorative gradient blobs */
+.spark-blob {
+  position: absolute;
+  filter: blur(38px);
+  opacity: 0.35;
+  z-index: 0;
+}
+.spark-blob--tl {
+  width: 420px; height: 420px;
+  left: -120px; top: -120px;
+  background: radial-gradient(circle at 40% 40%, #8ec5ff, transparent 60%),
+              radial-gradient(circle at 70% 70%, #b3ffea, transparent 60%);
+}
+.spark-blob--br {
+  width: 520px; height: 520px;
+  right: -160px; bottom: -160px;
+  background: radial-gradient(circle at 60% 40%, #ffd3a7, transparent 60%),
+              radial-gradient(circle at 20% 70%, #ff9bb8, transparent 60%);
+}
+
+/* Grid */
+.spark-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 24px;
+  min-height: clamp(320px, 44vh, 520px); /* compact by default */
+  padding: 26px 18px 28px;
+}
+
+/* Content column */
+.spark-col--content {
+  padding: 12px 8px;
+}
+
+/* Title + subtitle with clamp to avoid overflow at 1536px */
+.spark-title {
+  margin: 0 0 8px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+  font-size: clamp(26px, 2.6vw, 44px);
+  color: #0f172a; /* slate-900 */
+}
+.spark-subtitle {
+  margin: 0 0 16px;
+  font-size: clamp(14px, 1.15vw, 16.5px);
+  line-height: 1.55;
+  color: #334155; /* slate-700 */
+  max-width: 48ch;
+}
+
+/* CTA cluster */
+.spark-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+.spark-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #111827; /* gray-900 */
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  box-shadow: 0 6px 14px rgba(17,24,39,0.2);
+}
+.spark-btn:hover { transform: translateY(-1px); background: #0b1220; }
+.spark-link {
+  font-size: 14px;
+  color: #0ea5e9; /* sky-500 */
+  text-decoration: none;
+}
+.spark-link:hover { text-decoration: underline; }
+
+/* Social proof */
+.spark-proof {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  color: #475569; /* slate-600 */
+  font-size: 13.5px;
+}
+.spark-avatars {
+  display: inline-flex;
+}
+.spark-avatars img {
+  width: 28px; height: 28px; border-radius: 999px; object-fit: cover;
+  border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  margin-left: -6px;
+}
+.spark-avatars img:first-child { margin-left: 0; }
+
+/* Image column */
+.spark-col--image { display: grid; place-items: center; }
+/* Make image fill the banner area completely */
+.spark-imgwrap {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.spark-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* fills entire height */
+  object-position: center;   /* centers image inside container */
+  display: block;
+  border-radius: inherit;
+  background: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+/* glow */
+.spark-image-glow {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -12px;
+  height: 22px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.18), transparent 60%);
+  filter: blur(6px);
+  z-index: -1;
+  border-radius: 50%;
+}
+
+/* Responsive polish */
+@media (max-width: 1536px) {
+  .spark-container { max-width: 1100px; }
+  .spark-imgwrap { max-width: 440px; }
+}
+@media (max-width: 1366px) {
+  .spark-grid {
+    min-height: clamp(300px, 42vh, 480px);
+    gap: 20px;
+    padding: 22px 16px 24px;
+  }
+  .spark-imgwrap { max-width: 420px; }
+}
+@media (max-width: 1200px) {
+  .spark-container { max-width: 980px; }
+  .spark-grid { grid-template-columns: 1fr; min-height: auto; }
+  .spark-col--image { order: 2; }
+  .spark-col--content { order: 1; }
+  .spark-imgwrap { max-width: 420px; margin-top: 4px; }
+}
+@media (max-width: 768px) {
+  .spark-container { padding: 16px; }
+  .spark-title { font-size: clamp(22px, 6vw, 30px); }
+  .spark-subtitle { font-size: 14px; }
+  .spark-imgwrap { max-width: 360px; }
+  .spark-proof { font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .spark-imgwrap { max-width: 320px; }
+}
+
+
+
+/* ========= 471px–1200px smart layout ========= */
+@media (min-width: 471px) and (max-width: 1200px) {
+  /* Auto-fit: 2 cols when there's space, otherwise 1 col */
+  .spark-grid {
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 20px;
+    min-height: auto;
+    padding: 22px 16px 24px;
+  }
+
+  /* Keep the content visually centered in both modes */
+  .spark-col--content {
+    justify-self: center;
+    text-align: center;
+    padding: 8px 6px;
+  }
+
+  .spark-title {
+    font-size: clamp(24px, 3.2vw, 36px);
+    line-height: 1.08;
+    margin-bottom: 8px;
+  }
+
+  .spark-subtitle {
+    font-size: clamp(14px, 1.4vw, 16px);
+    max-width: 56ch;
+    margin-inline: auto; /* centers under title */
+  }
+
+  .spark-cta {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .spark-proof {
+    justify-content: center;
+  }
+
+  /* Image: full width when single-column, contained when two-column */
+  .spark-col--image { place-items: center; }
+  .spark-imgwrap {
+    width: 100%;
+    max-width: 560px;         /* grow a bit in this range */
+    margin: 4px auto 0;
+  }
+  /* .spark-image { aspect-ratio: 4 / 3; } */
+}
+
+/* ======= Keep phones (<=470px) as you liked it ======= */
+@media (max-width: 470px) {
+  .spark-container { padding: 16px; }
+  .spark-grid { grid-template-columns: 1fr; gap: 16px; }
+  .spark-col--content { text-align: center; }
+  .spark-title { font-size: clamp(22px, 6vw, 28px); }
+  .spark-imgwrap { max-width: 340px; }
+}
+
+/* ======= Desktop (>=1201px) unchanged two-column ======= */
+@media (min-width: 1201px) {
+  .spark-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 24px;
+  }
+  .spark-col--content { text-align: left; justify-self: start; }
+  .spark-imgwrap { max-width: 460px; }
+}
