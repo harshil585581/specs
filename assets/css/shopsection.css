@@ -1,0 +1,129 @@
+
+/* ====== FORCE GRID (override any flex from theme) ====== */
+/* Hit the wrapper by multiple, high-specificity selectors */
+.shop .container .row .col-lg-9 .list-grid-wrapper,
+.list-grid-wrapper,
+.list-grid-wrapper.skshop-grid,
+.list-grid-wrapper.list-view.skshop-grid {
+  display: grid !important;
+  grid-auto-flow: row !important;
+  gap: 24px !important;
+  justify-items: stretch !important;
+  align-items: stretch !important;
+  /* Default ≥1355px → 4 columns (25%) */
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
+/* Children should not stretch tracks */
+.shop .container .row .col-lg-9 .list-grid-wrapper > *,
+.list-grid-wrapper > * {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+/* ≤ 507px → 1 column */
+@media (max-width: 507px) {
+  .shop .container .row .col-lg-9 .list-grid-wrapper,
+  .list-grid-wrapper {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+}
+/* ====== Mobile card height fix (≤507px) ====== */
+@media (max-width: 507px) {
+  .skshop-card,
+  .product-card,
+  .list-grid-wrapper .product-card {
+    height: 490px !important;        /* fixed height */
+    max-height: 490px !important;
+    overflow: hidden !important;     /* prevents layout stretch */
+  }
+
+  /* Keep inner content nicely spaced within 550px */
+  .product-card__thumb {
+    max-height: 260px !important;    /* image area */
+  }
+
+  .product-card__content {
+    flex-grow: 1;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+/* 508–761px → 2 columns (50%) */
+@media (min-width: 508px) and (max-width: 761px) {
+  .shop .container .row .col-lg-9 .list-grid-wrapper,
+  .list-grid-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 762–1354px → 3 columns (33.33%) */
+@media (min-width: 762px) and (max-width: 1354px) {
+  .shop .container .row .col-lg-9 .list-grid-wrapper,
+  .list-grid-wrapper {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ≥ 1355px → 4 columns (25%) */
+@media (min-width: 1355px) {
+  .shop .container .row .col-lg-9 .list-grid-wrapper,
+  .list-grid-wrapper {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Ensure theme's "list view" toggle can't switch back to flex */
+.list-grid-wrapper.list-view {
+  display: grid !important;
+}
+
+/* Keep card titles aligned height so rows look tidy */
+.skshop-card .skshop-title,
+.product-card .title.skshop-title {
+  min-height: 5px;
+}
+
+/* ====== IMAGE: no hover zoom, no overflow ====== */
+.product-card__thumb,
+.skshop-thumb {
+  overflow: hidden !important;
+  max-width: 100% !important;
+}
+
+.product-card__thumb img,
+.skshop-thumb img,
+.skshop-thumb-img {
+  display: block !important;
+  height: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  transition: none !important;
+  transform: none !important;
+}
+
+.product-card:hover .product-card__thumb img,
+.product-card:hover .skshop-thumb-img,
+.skshop-thumb:hover img {
+  transform: none !important;
+}
+
+/* ====== Price slider labels: keep in one line ====== */
+.horizontal-slider .example-thumb {
+  white-space: nowrap !important;
+}
+
+
+
+.example-thumb-0{
+    left: 8% !important;
+}
+
+.example-thumb-1 {
+    /* top: -20px !important; */
+    width: 25% !important;
+    left: 100% !important;
+}

@@ -1,0 +1,144 @@
+.fpsec-scope {
+  --fpsec-gray-100: hsl(220, 12%, 98%);
+  --fpsec-blue-300: hsl(217, 80%, 55%);
+  --fpsec-shadow-md:
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.fpsec-scope .fpsec-section {
+  padding-block: 0rem 2rem;
+}
+
+.fpsec-scope .fpsec-container {
+  max-width: 75rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+/* Banner layout */
+.fpsec-scope .fpsec-banner-column {
+  position: relative;
+  display: grid;
+  align-items: center;
+  row-gap: 3rem;
+  column-gap: 2rem;
+}
+
+@media screen and (min-width: 48rem) {
+  .fpsec-scope .fpsec-banner-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: center;
+    /* margin-top: 4rem; */
+  }
+}
+
+@media screen and (min-width: 64rem) {
+  .fpsec-scope .fpsec-banner-column {
+    grid-template-columns: 1fr max-content;
+    column-gap: 4rem;
+  }
+}
+
+/* Image height increased */
+.fpsec-scope .fpsec-banner-image {
+  display: block;
+  max-width:21rem;
+  height: 24rem;
+  justify-self: center;
+  object-fit: contain;
+}
+
+@media screen and (min-width: 48rem) {
+  .fpsec-scope .fpsec-banner-image {
+    max-width: 22rem;
+    height: 30rem;
+    order: 1;
+  }
+}
+
+@media screen and (min-width: 64rem) {
+  .fpsec-scope .fpsec-banner-image {
+    max-width: 26rem;
+    height: 34rem;
+    margin-right: 5rem;
+  }
+}
+
+/* Text column */
+.fpsec-scope .fpsec-banner-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  row-gap: 1.5rem;
+  color: var(--fpsec-gray-100);
+}
+
+/* Social links */
+.fpsec-scope .fpsec-banner-link {
+  position: absolute;
+  display: grid;
+  top: 30%;
+  right: 1.5rem;
+  justify-items: center;
+  row-gap: 0.5rem;
+  visibility: hidden;
+}
+
+@media screen and (min-width: 64rem) {
+  .fpsec-scope .fpsec-banner-link { visibility: visible; }
+}
+
+.fpsec-scope .fpsec-banner-link > * {
+  font-size: 1.25rem;
+  color: var(--fpsec-gray-100);
+}
+
+.fpsec-scope .fpsec-banner-link::before,
+.fpsec-scope .fpsec-banner-link::after {
+  content: "";
+  position: absolute;
+  width: 4rem;
+  height: 1.5px;
+  transform: rotate(90deg);
+  background: var(--fpsec-gray-100);
+}
+
+.fpsec-scope .fpsec-banner-link::before { top: -3rem; }
+.fpsec-scope .fpsec-banner-link::after { bottom: -3rem; }
+
+.fpsec-scope .fpsec-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.35rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 3rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--fpsec-gray-100);
+  background-color: var(--fpsec-blue-300);
+  box-shadow: var(--fpsec-shadow-md);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.fpsec-scope .fpsec-title-large {
+  font-size: clamp(2.65rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--fpsec-gray-100);
+}
+
+.fpsec-scope .fpsec-text-base {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--fpsec-gray-100);
+}
+
+/* ✅ Banner background as image */
+.fpsec-scope .fpsec-banner-section {
+  background: url("./assets/images/home/bg-home.jpg") center center / cover no-repeat;
+  background-attachment: fixed;
+}
