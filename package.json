@@ -2,7 +2,7 @@
   "name": "temp-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://harshil585581.github.io/specs/",
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",
     "@ramonak/react-progress-bar": "^5.2.0",
